@@ -1,0 +1,56 @@
+<div class="weather-form">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Enter Weather Map Details</mat-card-title>
+    </mat-card-header>
+    <form #form="ngForm" class="weather-form" (submit)="getWeatherData()">
+      <mat-card-content>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Latitude"
+            type="text"
+            name="latitude"
+            required
+            [(ngModel)]="latitude"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Longitude"
+            type="text"
+            name="longitude"
+            required
+            [(ngModel)]="longitude"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="API Key"
+            type="text"
+            name="api"
+            required
+            [(ngModel)]="apiKey"
+          />
+        </mat-form-field>
+
+        <button
+          [disabled]="form.invalid"
+          mat-raised-button
+          color="primary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
+
+<div class="weather-container">
+  <div *ngIf="isWeatherChart" [chart]="weatherChart"></div>
+</div>
